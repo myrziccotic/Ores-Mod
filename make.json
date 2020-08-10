@@ -1,0 +1,83 @@
+{
+    "global": {
+        "info": {
+            "name": "Ores Mod",
+            "author": "Kotoffey23",
+            "version": "3.0.5",
+            "description": "\u041a\u0440\u0430\u0441\u0438\u0432\u044b\u0435 \u0440\u0443\u0434\u044b, \u0438 \u043c\u0435\u0445\u0430\u043d\u0438\u0437\u043c\u044b, \u0432\u0441\u0451 \u043a\u0430\u043a \u043e\u0431\u044b\u0447\u043d\u043e, \u0445\u043e\u0442\u044f \u043d\u0435 \u0441\u043e\u0432\u0441\u0435\u043c..."
+        },
+        "api": "CoreEngine"
+    },
+    "make": {
+        "debugAbi": "armeabi-v7a",
+        "abis": [
+            "armeabi-v7a",
+            "x86"
+        ],
+        "linkNative": [
+            "minecraftpe",
+            "innercore",
+            "nativejs"
+        ],
+        "excludeFromRelease": [],
+        "pushTo": "storage/emulated/0/games/horizon/packs/Inner_Core_Test/innercore/mods/OresMod",
+        "ndkPath": null
+    },
+    "resources": [
+        {
+            "path": "src/assets/resource_packs/*",
+            "type": "minecraft_resource_pack"
+        },
+        {
+            "path": "src/assets/behavior_packs/*",
+            "type": "minecraft_behavior_pack"
+        },
+        {
+            "path": "src/assets/res",
+            "type": "resource_directory"
+        },
+        {
+            "path": "src/assets/gui",
+            "type": "gui"
+        }
+    ],
+    "sources": [
+        {
+            "source": "src/lib/*",
+            "type": "library",
+            "language": "javascript"
+        },
+        {
+            "source": "src/preloader/*",
+            "type": "preloader",
+            "language": "javascript"
+        },
+        {
+            "type": "main",
+            "language": "typescript",
+            "source": "src/dev",
+            "target": "main.js"
+        },
+        {
+            "type": "launcher",
+            "language": "javascript",
+            "source": "src/launcher.js"
+        }
+    ],
+    "compile": [
+        {
+            "source": "src/native/*",
+            "type": "native"
+        },
+        {
+            "source": "src/java/*",
+            "type": "java"
+        }
+    ],
+    "additional": [
+        {
+            "source": "src/assets/root/*",
+            "targetDir": "."
+        }
+    ]
+}
