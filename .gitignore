@@ -1,5 +1,4 @@
-toolchain/build
-toolchain/ndk
+toolchain
 output
 mod.icmod
 tsconfig.json
@@ -7,4 +6,7 @@ tsconfig.json
 **/__pycache__
 .settings
 .vs
-build-and-push-all.bat
+.vscode
+build-and-push-all.bat.Ink
+.project
+.classpatch

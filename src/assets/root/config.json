@@ -204,14 +204,14 @@
   "armor_implantation_table":{
     "energy_storage":10000,
     "energy_consumption":10,
-    "work_time":41
+    "work_time":141
   },
   "nanite_collector":{
     "energy_EU_storage":4000,
     "energy_QE_storage":200,
     "energy_EU_consumption":13,
     "energy_QE_consumption":4,
-    "work_time":20,
+    "work_time":120,
     "tier":4
   },
   "nanite_training_node":{
@@ -220,7 +220,7 @@
     "energy_EU_consumption":12,
     "energy_QE_consumption":4,
     "tier":4,
-    "work_time":40
+    "work_time":140
   },
   "mechanic_armor":{
     "energy_use_by_modfiers":{
