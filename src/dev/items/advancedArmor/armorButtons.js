@@ -1,4 +1,4 @@
-var button_scale = OresAPI.getConfigValue("overlay_buttons_scale");
+var button_scale = /*OresAPI.getConfigValue("overlay_buttons_scale")*/45;
 var ArmorButtons = {
     currentScreen: null,
     isEnabled: false,
@@ -8,7 +8,7 @@ var ArmorButtons = {
             x: 1000 - button_scale,
             y: UI.getScreenHeight()/2 - button_scale*2,
             width: button_scale,
-            height: button_scale*5
+            height: button_scale*4
         },
         drawing: [{type: "background", color: 0}],
         elements: {}

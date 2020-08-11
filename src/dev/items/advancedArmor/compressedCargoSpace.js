@@ -21,14 +21,12 @@ const window = {
 var UPDATE_DATA_NEEDED = false;
 ArmorButtons.registerButton("compressedCargoSpace", {
     type: "button",
-    y: 4000,
-    scale: button_scale,
+    y: 2000,
+    scale: 1000/32,
     bitmap: "knopka",
     clicker:{
         onClick:function(){
             CompressedCargoSpace.displayWindow();
-			CCStick.enabled = true;
-			CCStick.key = Player.getArmorSlot(1).data;
         }
     }
 }, function(){
@@ -94,31 +92,20 @@ var CompressedCargoSpace = {
         }*/
     },
     displayWindow:function(){
-        try{
-            CompressedCargoSpace.windowContainer.openAs(new UI.StandartWindow(CompressedCargoSpace.window));
-            for(var i in CompressedCargoSpace.windowContainer.getGuiContent().elements){
-                if(i != "closeButton"){
-                    let slotInstance = CompressedCargoSpace.instance[i] || {id: 0, count: 0, data: 0};
-                    //Debug.message("§b"+i);
-                    //Debug.m(this.instance[i]);
-                    //Debug.m(slotInstance); 
-                    CompressedCargoSpace.windowContainer.setSlot(i, slotInstance.id, slotInstance.count, slotInstance.data);
-                }
+        //try {
+        CompressedCargoSpace.windowContainer.openAs(new UI.StandartWindow(CompressedCargoSpace.window));
+        for(var i in CompressedCargoSpace.windowContainer.getGuiContent().elements){
+            if(i != "closeButton"){
+                let slotInstance = CompressedCargoSpace.instance[i] || {id: 0, count: 0, data: 0};
+                //Debug.message("§b"+i);
+                //Debug.m(this.instance[i]);
+                //Debug.m(slotInstance); 
+                CompressedCargoSpace.windowContainer.setSlot(i, slotInstance.id, slotInstance.count, slotInstance.data);
             }
-        }catch(e){
+        }
+        /*}catch(e){
             Debug.error(e);
             CompressedCargoSpace.windowContainer.close();
-        }
+        }*/
     }
 }
-
-/*Callback.addCallback("tick", function(){
-	if(CCStick.enabled){
-		energy = armorExtraData.getEnergy(CCStick.key).energy;
-		if(energy >= 200){
-			armorExtraData.setEnergy(CCStick.key, energy-200);
-		}else{
-			CompressedCargoSpace.saveData();
-		}
-	}
-});*/
