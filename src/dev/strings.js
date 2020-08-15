@@ -97,7 +97,7 @@ Translation.addTranslation("Cores", {ru: "Ядра"});
 Translation.addTranslation("Nuggets", {ru: "Самородки"});
 Translation.addTranslation("Nanite Collector", {ru: "Сборщик Нанитов"});
 Translation.addTranslation("Nanite Training Node", {ru: "Узел Обучения Нанитов"});
-Translation.addTranslation("Input", {ru: "Выход"});
+Translation.addTranslation("Output", {ru: "Выход"});
 Translation.addTranslation("Most of the nuggets are obtained from the same name full-fledged ingots (in the case of a lapis lazuli fragment - this is a whole lapis lazuli), except for unidentified and electroumovogo nuggets", {ru: "Большая часть самородков получена из одноименных полноценных слитков (в случае с фрагментом ляпис-лазури-это целый ляпис-лазурь), за исключением неидентифицированных и электроумовых самородков"});
 Translation.addTranslation("To back", {ru: "Назад"});
 Translation.addTranslation("Rebuilt Matter", {ru: "Реконструированная Материя"});

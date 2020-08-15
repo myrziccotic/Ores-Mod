@@ -264,7 +264,7 @@ function energyNameOverride(color, type, tier, mode){
             if(!mode){
                 return "§7"+ Translation.translate("Power tier")+": "+tier;
             }else{
-                return "§7"+ Translation.translate("Input")+": "+tier+"/tick";
+                return "§7"+ Translation.translate("Output")+": "+tier+"/tick";
             }
         }
     });
