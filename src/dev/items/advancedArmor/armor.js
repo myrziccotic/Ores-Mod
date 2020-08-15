@@ -16,7 +16,7 @@ OresAPI.registerArmor({
     },
     overrideNames:{
         dontShowData: true,
-        standart: true,
+        prefix:{standart:true, itemType: "item"},
         itemsColor: 4,
         other:function(item, name){
             const energy = ChargeItemRegistry.getEnergyStored(item, "Eu");
@@ -31,12 +31,12 @@ OresAPI.registerArmor({
 OresAPI.registerArmor({
     material: "mechanicSapphire",
     properties:{
-        reventDamaging: true,
+        preventDamaging: true,
         durability: 15000000,
         helmet: {armor: 1.5}, 
         chestplate: {armor: 1.5},
-        leggings: {armor: 1.5},
-        boots: {armor: 1.5}
+        leggings: {armor: 1},
+        boots: {armor: .5}
     },
     translations:{
         helmet: {ru: "Механический Сапфировый Шлем"},
@@ -46,7 +46,7 @@ OresAPI.registerArmor({
     },
     overrideNames:{
         dontShowData: true,
-        standart: true,
+        prefix:{standart:true, itemType: "item"},
         itemsColor: 1,
        other:function(item){
             const energy = ChargeItemRegistry.getEnergyStored(item, "Eu");
@@ -127,10 +127,6 @@ function getExtra(index, slot){
         slot.extra.putInt("key", armorExtraData.register(getMechanicArmorParams(slot.id)));
         Player.setArmorSlot(index, slot.id, slot.count, slot.data, slot.extra);
     }
-    /*if(!slot.data){
-        slot.data = armorExtraData.register(getMechanicArmorParams(slot.id));
-        Player.setArmorSlot(index, slot.id, slot.count, slot.data, slot.extra);
-    }*/
     if(currentSuit == 4&&checkSuit()){
         return armorExtraData.get(slot.extra.getInt("key"));
     }
@@ -195,7 +191,8 @@ function mechanicArmorFuncs(j, i1, accelerationLevel){
             return false;
         },
         tick:function(slot, index){
-            let time = World.getThreadTime()%10 == index;
+            let currentTime = World.getThreadTime();
+            let time = currentTime%10 == index;
             let c = Player.getPosition();
             let extra = getExtra(index, slot);
             let charge = ChargeItemRegistry.getEnergyStored(slot, "Eu");
@@ -211,32 +208,31 @@ function mechanicArmorFuncs(j, i1, accelerationLevel){
                 case 1:
 					if(charge >= IMP_FIRE_RESIST_ENERGY_CONSUMTPION&&extra.fireResist){
                         Entity.addEffect(Player.get(), PotionEffect.fireResistance, 0, 30, true, true);
-                        charge -= IMP_FIRE_RESIST_ENERGY_CONSUMTPION;
+                        if(currentTime%600 == 0) charge -= IMP_FIRE_RESIST_ENERGY_CONSUMTPION;//раз в 5 минут
                     }
-                    if(charge >= IMP_FIRE_RESIST_ENERGY_CONSUMTPION&&extra.damageProtection){
+                    if(charge >= IMP_DAMAGE_PROTECTION_ENERGY_CONSUMPTION&&extra.damageProtection){
                         let lvl = extra.damageProtection;
                         Entity.clearEffect(Player.get(), PotionEffect.blindness);
                         Entity.clearEffect(Player.get(), PotionEffect.hunger);
                         charge -= IMP_DAMAGE_PROTECTION_ENERGY_CONSUMPTION;
                         
-                        if(lvl > 1&&charge >= IMP_FIRE_RESIST_ENERGY_CONSUMTPION*2){
+                        if(lvl > 1&&charge >= IMP_DAMAGE_PROTECTION_ENERGY_CONSUMPTION*2){
                             Entity.clearEffect(Player.get(), PotionEffect.weakness);
                             Entity.clearEffect(Player.get(), PotionEffect.confusion);
                             Entity.clearEffect(Player.get(), PotionEffect.movementSlowdown);
                             charge -= IMP_DAMAGE_PROTECTION_ENERGY_CONSUMPTION*2;
 
-                            if(lvl > 2&&charge >= IMP_FIRE_RESIST_ENERGY_CONSUMTPION*3){
+                            if(lvl > 2&&charge >= IMP_DAMAGE_PROTECTION_ENERGY_CONSUMPTION*3){
                                 Entity.clearEffect(Player.get(), PotionEffect.poison);
                                 Entity.clearEffect(Player.get(), PotionEffect.wither);
                                 charge -= IMP_DAMAGE_PROTECTION_ENERGY_CONSUMPTION*3;
 
                                 if(Entity.getHealth(Player.get()) < Entity.getMaxHealth(Player.get())){
-									if(Math.random() < .35){
+									if(Math.random() < .15){
 										//Entity.addEffect(Player.get(), PotionEffect.regeneration, 4, 10, true, true);
 										Entity.healEntity(Player.get(), .5);
 									}
                                 } 
-                                
                             }
                         }
                     }
@@ -247,6 +243,7 @@ function mechanicArmorFuncs(j, i1, accelerationLevel){
                     if(extra.compressedCargoSpace){
                         if(charge >= IMP_COMPRESSED_SPACE_ENERGY_CONSUMPTION){
                             ArmorButtons.enable("compressedCargoSpace");
+                            if(CompressedCargoSpace.isOpened) charge -= IMP_COMPRESSED_SPACE_ENERGY_CONSUMPTION;
                         }else{
                             ArmorButtons.disable("compressedCargoSpace");
                         }

@@ -142,25 +142,6 @@
             this.particlesDensity = count;
         }
 
-        this.durationEmit = function(iterationsCount, timeMillis){
-            this.emit();
-            if(iterationsCount - 1 > 0){
-                this.context.runOnUiThread(
-                    new java.lang.Runnable({
-                        run:function(){
-                            new android.os.Handler().postDelayed(
-                                new java.lang.Runnable({
-                                    run:function(){
-                                        this.durationEmit(iterationsCount -1, timeMillis);
-                                    }
-                                }), timeMillis || 1000
-                            );
-                        }
-                    })
-                );
-            }
-        }
-
         this.emit = function(){
             const c = this.coords;
             const r = this.radius;

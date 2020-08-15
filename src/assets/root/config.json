@@ -130,6 +130,42 @@
       "boots":1
     }
   },
+  "lavarite":{
+    "tool_lvl":3,
+    "veins":{
+      "size":{
+        "min":1,
+        "max":4
+      }
+    },
+    "depth_ore_generation":{
+        "min":10,
+        "max":54
+    }
+  },
+  "leotite":{
+    "tool_lvl":2,
+    "veins":{
+      "size":{
+        "min":1,
+        "max":7
+      }
+    }
+  },
+  "mionite":{
+    "tool_lvl":3,
+    "veins":{
+      "size":{
+        "min":1,
+        "max":3
+      },
+      "amount_in_chunk":2
+    },
+    "depth_ore_generation":{
+        "min":10,
+        "max":54
+    }
+  },
   "leadstone_solar_panel":{
     "gen_day":2,
     "gen_night":0,
@@ -233,7 +269,7 @@
       "Defense_module":400,
       "The_speed_of_digging":80,
       "Acceleration":110,
-      "Compressed_Cargo_Space":160,
+      "Compressed_Cargo_Space":110,
       "Submariner":310,
       "Integrated_jetpack":140,
       "Anti-gravity_field_generator":200

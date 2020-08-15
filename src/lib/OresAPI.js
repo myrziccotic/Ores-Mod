@@ -1,6 +1,6 @@
 LIBRARY({
     name: "OresAPI",
-    version: "11",
+    version: "12",
     shared: false,
     api: "CoreEngine"
 });
@@ -91,26 +91,44 @@ function registerOre(obj){
     const oreName = buildName(material+" Ore");
     const oreTexture = Standardizer.getStandartOreTexture(material);
     const oreBlockId = Standardizer.getStandartOreBlockID(material);
+    const oreSpecialParams = obj4.oreSpecialParams || "opaque";
+    const blockSpecialParams = obj4.blockSpecialParams || "opaque";
     const oreBlockName = buildName(material+" block");
     const oreBlockTexture = Standardizer.getStandartOreBlockTexture(material);
     const requiredToolLvl = obj4.requiredToolLvl || 1;
     const oreDrop = obj.oreDrop || null;
+
     const dimension = obj4.dimension&&["GenerateEndChunk", "GenerateChunk", "GenerateNetherChunk"].indexOf(obj4.dimension) > -1 ? obj4.dimension : "GenerateChunk"; 
     const minVeinSize = obj4.veinSize.min || 1;
     const maxVeinSize = obj4.veinSize.max || 1;
     const veinsInChunk = obj4.veinsInChunk || 2;
+    const generate = obj4.customOreGen || function(x, z){
+        for(var i = 0; i < veinsInChunk; i++){
+            let c = GenerationUtils.randomCoords(x, z, minDepthGeneration, maxDepthGeneration);
+            GenerationUtils.generateOre(c.x, c.y, c.z, BlockID[oreId], 0, Math.floor(Math.random() * (maxVeinSize - minVeinSize + 1)) + minVeinSize);
+        }
+    }
     const minDepthGeneration = obj4.depthGeneration && obj4.depthGeneration.min ? obj4.depthGeneration.min : 64;
     const maxDepthGeneration = obj4.depthGeneration && obj4.depthGeneration.max ? obj4.depthGeneration.max : 10;
     
     registerItem(sourceId, sourceName, sourceTexture, sourceTranslations, sourceSpecial, sourceNameOverride);
-    registerBlock(oreId, false, [{name: oreName, texture: oreTexture, inCreative: true}], "opaque", oreTranslations, oreNameOverride, "stone", requiredToolLvl);
-    registerBlock(oreBlockId, false, [{name: oreBlockName, texture: oreBlockTexture, inCreative: true}], "opaque", oreBlockTranslations, oreBlockNameOverride, "stone", requiredToolLvl);
+    registerBlock(oreId, false, [{name: oreName, texture: oreTexture, inCreative: true}], oreSpecialParams, oreTranslations, oreNameOverride, "stone", requiredToolLvl);
+    registerBlock(oreBlockId, false, [{name: oreBlockName, texture: oreBlockTexture, inCreative: true}], blockSpecialParams, oreBlockTranslations, oreBlockNameOverride, "stone", requiredToolLvl);
     
     Translation.addTranslation(oreName, oreTranslations);
     Translation.addTranslation(oreBlockName, oreBlockTranslations);
     
     Block.registerDropFunction(oreId, function(c, id, data, digging, tool){
         if(digging >= requiredToolLvl){
+            let drop = oreDrop;
+            for(var i in drop){
+                if(i[1] instanceof "string"){
+                    let values = i[1].split("-").forEach(function(e, i){
+                        return parseInt(e);
+                    });
+                    drop[i] = random(values[0], values[1]);
+                }
+            }
             return oreDrop || [[id, 1, data]];
         }
     });
@@ -119,13 +137,8 @@ function registerOre(obj){
             return [[id, 1, data]];
         }
     });
-	
     Callback.addCallback(dimension, function(x, z){
-        for(var i = 0; i < veinsInChunk; i++){
-            let c = GenerationUtils.randomCoords(x, z, minDepthGeneration, maxDepthGeneration);
-            GenerationUtils.generateOre(c.x, c.y, c.z, BlockID[oreId], 0, Math.floor(Math.random() * (maxVeinSize - minVeinSize + 1)) + minVeinSize);
-        }
-		Logger.Log(obj1.material);
+        generate(x, z);
     });
     Callback.addCallback("PostLoaded", function(){
         if(!obj4.nonCreateGroup){

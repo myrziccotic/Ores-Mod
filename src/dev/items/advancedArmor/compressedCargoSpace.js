@@ -13,7 +13,7 @@ const window = {
     
     elements: {
         "closeButton":{type: "button", x: 900, y: 10, bitmap: "btn", scale: 4, clicker:{onClick:function(){
-            CompressedCargoSpace.saveData();
+            CompressedCargoSpace.closeWindow();
         }}}
     }
 };
@@ -39,6 +39,7 @@ var CompressedCargoSpace = {
     windowContainer: new UI.Container(),
     elements: {},
     instance: null,
+    isOpened: false,
     level: null,
     key: null,
     onDisplay:function(){
@@ -72,7 +73,7 @@ var CompressedCargoSpace = {
             Debug.error(e);
         }*/
     },
-    saveData:function(){
+    closeWindow:function(){
         //try{
         let instance = {};
         let elements = this.windowContainer.getGuiContent().elements;
@@ -86,6 +87,7 @@ var CompressedCargoSpace = {
         this.instance = instance;
         //Debug.m(this.instance);
         this.windowContainer.close();
+        CompressedCargoSpace.isOpened = false;
         //Debug.m(this.instance);
         /*}catch(e){
             Debug.message(e);
@@ -94,6 +96,7 @@ var CompressedCargoSpace = {
     displayWindow:function(){
         //try {
         CompressedCargoSpace.windowContainer.openAs(new UI.StandartWindow(CompressedCargoSpace.window));
+        CompressedCargoSpace.isOpened = true;
         for(var i in CompressedCargoSpace.windowContainer.getGuiContent().elements){
             if(i != "closeButton"){
                 let slotInstance = CompressedCargoSpace.instance[i] || {id: 0, count: 0, data: 0};

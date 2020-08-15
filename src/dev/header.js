@@ -3,7 +3,7 @@ IMPORT("OresAPI");
 IMPORT("ChargeItem");
 IMPORT("GUILib");
 IMPORT("RelativeAPI");
-IMPORT("StructuresAPI");
+IMPORT("itemAnimator");
 
 function sphere(type, x, y, z, r){
 	//pich - вертикаль, yaw - горизонталь
@@ -190,6 +190,49 @@ ModAPI.addAPICallback("ICore", function(api){
 
     IndustrialCraftIsExist = true;
 });
+
+var OreGenerationHelper = {
+    findAllAndPlace:function(x, y, z, id, targetBlock, key){
+        let blocks = [];
+        let coords = this.findAll(x, y, z, targetBlock)
+        for(var i in coords){
+            let crds = i.split(":").map(function(e){
+                return parseInt(e)
+            });
+            blocks.push(crds);
+        }
+        
+        let count = random(
+            OresAPI.getConfigValue(key+".veins.size.min"),
+            OresAPI.getConfigValue(key+".veins.size.max")
+        );
+        if(count > blocks.length) count = blocks.length;
+        for(let i = 0; i < count; i++){
+            let index = Math.floor(Math.random() * blocks.length);
+            let crds = blocks[index];
+			if(World.getBlockID(crds[0], crds[1], crds[2]) == targetBlock){
+				World.setBlock(crds[0], crds[1], crds[2], id);
+				//alert(targetBlock);
+			}
+            coords.splice(index, 1);
+        }
+    },
+    findAll:function(x, y, z, targetBlock, map){
+        if(!map) map = [];
+        let key = x+":"+y+":"+z;
+        if(map[key] || World.getBlockID(x, y, z) !== targetBlock) return map;
+        map[key] = true;
+        
+        this.findAll(x + 1, y, z, targetBlock, map);
+        this.findAll(x - 1, y, z, targetBlock, map);
+        this.findAll(x, y + 1, z, targetBlock, map);
+        this.findAll(x, y - 1 , z, targetBlock, map);
+        this.findAll(x, y, z + 1, targetBlock, map);
+        this.findAll(x, y, z - 1, targetBlock, map);
+
+        return map;
+    }
+}
 
 var UIColor = android.graphics.Color;
 
