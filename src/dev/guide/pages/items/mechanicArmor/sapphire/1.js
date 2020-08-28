@@ -14,7 +14,7 @@ ModAPI.addAPICallback("GuideAPI", function(){
             {
                 grid:[["a", "m", "a"], ["l", "c", "l"], ["o", "h", "g"]],
                 materials:{
-                    "a":{id: ItemID.crystalSapphire},
+                    "a":{id: ItemID.nuggetMionite},
                     "h":{id: ItemID.mechanicAdamantiteHelmet},
                     "l":{id: ItemID.advancedOpticalLens},
                     "c":{id: ItemID.centralLogicSystem},

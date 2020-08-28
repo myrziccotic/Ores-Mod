@@ -18,11 +18,13 @@ OresAPI.registerArmor({
         dontShowData: true,
         prefix:{standart:true, itemType: "item"},
         itemsColor: 4,
-        other:function(item, name){
+        other:function(item){
+            const procent = ArmorButtons.currentScreen == "hud_screen" || ArmorButtons.currentScreen == "in_game_play_screen" ?
+                "%%%%%%%%" : "%%%%";
             const energy = ChargeItemRegistry.getEnergyStored(item, "Eu");
             const storage = ChargeItemRegistry.getMaxCharge(item.id, "Eu");
             const charge = "§9"+Translation.translate("Charge")+": §e";
-            return charge+NameOverrider.transformNumber(energy)+"§f/§7"+NameOverrider.transformNumber(storage)+" §9Eu";
+            return charge+(energy/storage*100)+procent;
         }
     },
     recipes:{prevent: true}
@@ -49,10 +51,12 @@ OresAPI.registerArmor({
         prefix:{standart:true, itemType: "item"},
         itemsColor: 1,
        other:function(item){
+            const procent = ArmorButtons.currentScreen == "hud_screen" || ArmorButtons.currentScreen == "in_game_play_screen" ?
+                "%%%%%%%%" : "%%%%";
             const energy = ChargeItemRegistry.getEnergyStored(item, "Eu");
             const storage = ChargeItemRegistry.getMaxCharge(item.id, "Eu");
             const charge = "§9"+Translation.translate("Charge")+": §e";
-            return charge+NameOverrider.transformNumber(energy)+"§f/§7"+NameOverrider.transformNumber(storage)+" §9Eu";
+            return charge+(energy/storage*100)+procent;
         }
     },
     recipes:{prevent: true}
@@ -78,11 +82,11 @@ function mechanicArmorRecipeFuncs(api, field, result){
 }
 
 Callback.addCallback("PostLoaded", function(){
-    Recipes.addShaped({id: ItemID.mechanicAdamantiteHelmet, count: 1, data: 0}, ["aha", "lcl", "omg"], ["a", ItemID.ingotAdamantite, -1, "h", ItemID.matrixOfHoloSystems, -1, "l", ItemID.opticalLens, -1, "c", ItemID.centralLogicSystem, -1, "o", ItemID.outerProtectivePlate, -1, "m", ItemID.manipulationCable, -1, "g", ItemID.connectingSystems, -1]);
+    Recipes.addShaped({id: ItemID.mechanicAdamantiteHelmet, count: 1, data: 0}, ["aha", "lcl", "omg"], ["a", ItemID.ingotLavarite, -1, "h", ItemID.matrixOfHoloSystems, -1, "l", ItemID.opticalLens, -1, "c", ItemID.centralLogicSystem, -1, "o", ItemID.outerProtectivePlate, -1, "m", ItemID.manipulationCable, -1, "g", ItemID.connectingSystems, -1]);
 	Recipes.addShaped({id: ItemID.mechanicAdamantiteChestplate, count: 1, data: 0}, ["oco", "tot", "sol"], ["o", ItemID.outerProtectivePlate, -1, "c", ItemID.connectingSystems, -1, "t", ItemID.thermoadaptationCoating, -1, "s", ItemID.manipulationCable, -1, "l", ItemID.localLogicSystem, -1]);
 	Recipes.addShaped({id: ItemID.mechanicAdamantiteLeggings, count: 1, data: 0}, ["mcm", "oto", "lso"], ["m", ItemID.movableElements, -1, "c", ItemID.connectingSystems, -1, "o", ItemID.outerProtectivePlate, -1, "t", ItemID.thermoadaptationCoating, -1, "l", ItemID.localLogicSystem, -1, "s", ItemID.manipulationCable, -1]);
 	Recipes.addShaped({id: ItemID.mechanicAdamantiteBoots, count: 1, data: 0}, ["oco", "tlo", "oto"], ["o", ItemID.outerProtectivePlate, -1, "c", ItemID.connectingSystems, -1, "t", ItemID.thermoadaptationCoating, -1, "l", ItemID.localLogicSystem, -1]);
-	OresAPI.addShapedRecipeWithFunction([ItemID.mechanicSapphireHelmet, 1, 0], ["ama", "lcl", "ohg"], ["a", ItemID.crystalSapphire, -1, "m", ItemID.advancedMatrixOfHoloSystems, -1, "l", ItemID.advancedOpticalLens, -1, "c", ItemID.centralLogicSystem, -1, "o", ItemID.outerProtectivePlate, -1, "h", ItemID.mechanicAdamantiteHelmet, -1, "g", ItemID.connectingSystems, -1], mechanicArmorRecipeFuncs);
+	OresAPI.addShapedRecipeWithFunction([ItemID.mechanicSapphireHelmet, 1, 0], ["ama", "lcl", "ohg"], ["a", ItemID.nuggetMionite, -1, "m", ItemID.advancedMatrixOfHoloSystems, -1, "l", ItemID.advancedOpticalLens, -1, "c", ItemID.centralLogicSystem, -1, "o", ItemID.outerProtectivePlate, -1, "h", ItemID.mechanicAdamantiteHelmet, -1, "g", ItemID.connectingSystems, -1], mechanicArmorRecipeFuncs);
 	OresAPI.addShapedRecipeWithFunction([ItemID.mechanicSapphireChestplate, 1, 0], ["ccc", "pap", "ppp"], ["p", ItemID.outerProtectivePlate, -1, "a", ItemID.mechanicAdamantiteChestplate, 0, "c", ItemID.advancedLocalLogicSystem, -1], mechanicArmorRecipeFuncs);
 	OresAPI.addShapedRecipeWithFunction([ItemID.mechanicSapphireLeggings, 1, 0], ["ppp", "mam", "pcp"], ["p", ItemID.outerProtectivePlate, -1, "m", ItemID.advancedMovableElements, -1, "a", ItemID.mechanicAdamantiteLeggings, -1, "c", ItemID.advancedLocalLogicSystem, -1], mechanicArmorRecipeFuncs);
 	OresAPI.addShapedRecipeWithFunction([ItemID.mechanicSapphireBoots, 1, 0], ["cac", "sss", "ppp"], ["p", ItemID.outerProtectivePlate, -1, "a", ItemID.mechanicAdamantiteBoots, -1, "c", ItemID.advancedLocalLogicSystem, -1, "s", ItemID.crystalSapphire, -1], mechanicArmorRecipeFuncs);
@@ -356,8 +360,7 @@ function checkDestroyBlockStartOrContinue(){
 		if(!CHECK_DESTROY_BLOCK_START_TIMEOUT){
 			let slot = Player.getArmorSlot(1);
 			let extra = getExtra(1, slot);
-			if(ChargeItemRegistry.getEnergyStored(slot, "Eu") >= IMP_DESTROY_BLOCK_ENERGY_CONSUMPTION&&
-                	extra.diggingSpeed){ 
+			if(extra.diggingSpeed&&ChargeItemRegistry.getEnergyStored(slot, "Eu") >= IMP_DESTROY_BLOCK_ENERGY_CONSUMPTION){ 
             	Entity.addEffect(Player.get(), PotionEffect.digSpeed, extra.diggingSpeed-1, 40, true, true);
             	resetArmor(1, slot, IMP_DESTROY_BLOCK_ENERGY_CONSUMPTION);
 				LAST_CHESTPLATE_VALIDATION_RESULT = 39;

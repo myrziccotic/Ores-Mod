@@ -8,15 +8,16 @@ ModAPI.addAPICallback("GuideAPI", function(){
         title: StringHelper.t("Ultimate Solar Panel"),
         recipes:[{
             grid:[
-                ["r", "l", "r"],
-                ["c", "p", "c"],
-                ["r", "c", "r"]
+                ["p", "l", "p"],
+                ["c", "r", "c"],
+                ["n", "c", "n"]
             ],
             materials:{
                 "l":{id: ItemID.cellPhotovailtaic, data: 0},
                 "r":{id: ItemID.nuggetMistery, data: 0},
                 "c":{id: ItemID.solarCoreUltimate, data: 0},
-                "p":{id: BlockID.solarPanelAdvanced, data: 0}
+                "p":{id: BlockID.solarPanelAdvanced, data: 0},
+                "n":{id: ItemID.nuggetMionite, data: 0}
             },
             result:{id: BlockID.solarPanelUltimate, data: 0},
         }], 

@@ -9,13 +9,12 @@ ModAPI.addAPICallback("GuideAPI", function(){
         ctrl: "craftPage",
         title: StringHelper.t("Advanced Local Logic System"),
         recipes:[{
-            grid: [["s", "r", "s"], ["d", "c", "d"], ["s", "r", "s"]],
+            grid: [["s", "r", "s"], ["s", "c", "s"], ["s", "r", "s"]],
             materials:{
                 "r":{id: 152},
                 "d":{id: 57},
-                "s":{id: BlockID.blockSapphire},
+                "s":{id: ItemID.nuggetMionite},
                 "g":{id: ItemID.opticalLens},
-                "d":{id: ItemID.localLogicSystem},
             },
             result: {id: ItemID.advancedLocalLogicSystem}
         }],  

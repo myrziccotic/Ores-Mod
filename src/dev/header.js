@@ -86,7 +86,7 @@ function circle(type, coords, radius){
 	}
 });*/
 
-OresAPI.createObject = function(objectType, configKey){
+OresAPI.createObject = function(objectType, configKey, oreDrop){
 	var get = OresAPI.getConfigValue;
 	switch(objectType){
 		case "ore":
@@ -106,7 +106,8 @@ OresAPI.createObject = function(objectType, configKey){
 				depthGeneration:{
 					min: depth("min"),
 					max: depth("max")
-				}
+				},
+				oreDrop: oreDrop || null
 			}
 		break;
 		case "tools":

@@ -96,7 +96,6 @@ ArmorButtons.Window.setAsGameOverlay(true);
 
 Callback.addCallback("NativeGuiChanged", function(screenName){
     ArmorButtons.currentScreen = screenName;
-    //alert(screenName);
     if(screenName == "hud_screen" || screenName == "in_game_play_screen"){
 		LAST_CHESTPLATE_VALIDATION_RESULT = null;
         if(ArmorButtons.checkSuit()){

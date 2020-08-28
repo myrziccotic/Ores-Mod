@@ -23,6 +23,8 @@ MachineRegistry.registerGenerator(BlockID.molecularGenerator, {
         return t == 1;
     },
     input: 0,
+    slot: null,
+    num: 0,
     tick:function(){
         if(TIPS){
             var container = this.container.getGuiContent();
@@ -38,20 +40,23 @@ MachineRegistry.registerGenerator(BlockID.molecularGenerator, {
         }
         this.container.setText("molecularText", parseInt(this.data.energy)+"/100000 Qe");
         this.container.setScale("molecularScale", this.data.energy/100000);
-        var slot = null;
-        var num;
-		var time = World.getThreadTime()%10;
-        if((this.data.power&&this.data.energy < this.getEnergyStorage())&&(time == 0 || time == 5)){
-            for(var i = 1; i <= 30; i++){
-                if(this.container.getSlot("slot"+i).id > 0){
-                    slot = this.container.getSlot("slot"+i);
-                    num = i;
-                }
-            }
-            if(slot){
-                this.data.energy = Math.min(this.getEnergyStorage(), this.data.energy+this.getInput(slot));
+		var time = World.getThreadTime()%8;
+        if((this.data.power&&this.data.energy < this.getEnergyStorage())&&time){
+            if(this.slot){
+                this.data.energy = Math.min(this.getEnergyStorage(), this.data.energy+this.getInput(this.slot));
                 slot.count--;
-                if(slot.count == 0) this.container.validateSlot("slot"+num);
+                if(slot.count == 0){
+                    this.container.validateSlot("slot"+this.num);
+                    this.slot = null;
+                }
+            }else{
+                for(var i = 1; i <= 30; i++){
+                    if(this.container.getSlot("slot"+i).id > 0){
+                        this.slot = this.container.getSlot("slot"+i);
+                        this.num = i;
+                        break;
+                    }
+                }
             }
         }
     },

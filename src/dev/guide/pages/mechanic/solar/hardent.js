@@ -10,14 +10,14 @@ ModAPI.addAPICallback("GuideAPI", function(){
         title: StringHelper.t("Hardent Solar Panel"),
             recipes:[{
                 grid:[
-                    ["r", "l", "r"],
-                    ["c", "p", "c"],
+                    ["p", "l", "p"],
+                    ["c", "r", "c"],
                     ["n", "r", "n"]
                 ],
                 materials:{
                     "p":{id: BlockID.solarPanelLeadstone, data: 0},
                     "c":{id: ItemID.solarCoreHardent, data: 0},
-                    "r":{id: 266, data: 0},
+                    "r":{id: ItemID.ingotLead, data: 0},
                     "l":{id: ItemID.cellPhotovailtaic, data: 0},
                     "n":{id: ItemID.nuggetLead, data: 0}
                 },

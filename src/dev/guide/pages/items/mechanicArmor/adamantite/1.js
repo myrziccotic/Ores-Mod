@@ -14,7 +14,7 @@ ModAPI.addAPICallback("GuideAPI", function(){
             {
                 grid:[["a", "h", "a"], ["l", "c", "l"], ["o", "m", "g"]],
                 materials:{
-                    "a":{id: ItemID.ingotAdamantite},
+                    "a":{id: ItemID.ingotLavarite},
                     "h":{id: ItemID.matrixOfHoloSystems},
                     "l":{id: ItemID.opticalLens},
                     "c":{id: ItemID.centralLogicSystem},

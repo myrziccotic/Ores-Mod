@@ -3,7 +3,7 @@ Callback.addCallback("PostLoaded", function(){
   OresAPI.addShapedRecipe([ItemID.solarCoreHardent, 1, 0], ["ono", "ncn", "ono"], ["c", ItemID.solarCoreLeadstone, 0, "n", ItemID.nuggetLead, 0]);
   OresAPI.addShapedRecipe([ItemID.solarCoreRedstone, 1, 0], ["ono", "ncn", "ono"], ["c", ItemID.solarCoreHardent, -1, "n", ItemID.nuggetElectrum, -1]);
   OresAPI.addShapedRecipe([ItemID.solarCoreResonant, 1, 0], ["olo", "lcl", "olo"], ["c", ItemID.solarCoreRedstone, -1, "n", 351, 4, "l", 265, 0]);
-  OresAPI.addShapedRecipe([ItemID.solarCoreAdvanced, 1, 0], ["olo", "lcl", "olo"], ["c", ItemID.solarCoreResonant, -1, "n", 351, 4, "l", ItemID.shardLapis, -1]);
+  OresAPI.addShapedRecipe([ItemID.solarCoreAdvanced, 1, 0], ["olo", "lcl", "olo"], ["c", ItemID.solarCoreResonant, -1, "l", ItemID.crystalSapphire, -1, "n", ItemID.shardLapis, -1]);
   OresAPI.addShapedRecipe([ItemID.solarCoreUltimate, 1, 0], ["ono", "ncn", "ono"], ["c", ItemID.solarCoreAdvanced, -1, "n", ItemID.nuggetMistery, -1, "o", ItemID.nuggetElectrum, -1]);
 });
 

@@ -12,8 +12,8 @@ ModAPI.addAPICallback("GuideAPI", function(){
             grid: [["s", "a", "s"], ["r", "g", "r"], ["s", "a", "s"]],
             materials:{
                 "g":{id: 102},
-                "a":{id: ItemID.ingotAdamantite},
-                "s":{id: ItemID.crystalSapphire},
+                "a":{id: ItemID.ingotLavarite},
+                "s":{id: ItemID.formationsLeotite},
                 "d":{id: 264},
                 "r":{id: 331}
             },

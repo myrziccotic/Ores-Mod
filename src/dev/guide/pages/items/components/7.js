@@ -13,7 +13,7 @@ ModAPI.addAPICallback("GuideAPI", function(){
             materials:{
                 "a":{id: ItemID.ingotAdamantite},
                 "s":{id: ItemID.crystalSapphire},
-                "d":{id: 264},
+                "d":{id: ItemID.ingotLavarite},
             },
             result: {id: ItemID.thermoadaptationCoating}
         }],

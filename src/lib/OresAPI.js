@@ -96,7 +96,7 @@ function registerOre(obj){
     const oreBlockName = buildName(material+" block");
     const oreBlockTexture = Standardizer.getStandartOreBlockTexture(material);
     const requiredToolLvl = obj4.requiredToolLvl || 1;
-    const oreDrop = obj.oreDrop || null;
+    const oreDrop = obj4.oreDrop || null;
 
     const dimension = obj4.dimension&&["GenerateEndChunk", "GenerateChunk", "GenerateNetherChunk"].indexOf(obj4.dimension) > -1 ? obj4.dimension : "GenerateChunk"; 
     const minVeinSize = obj4.veinSize.min || 1;
@@ -118,18 +118,16 @@ function registerOre(obj){
     Translation.addTranslation(oreName, oreTranslations);
     Translation.addTranslation(oreBlockName, oreBlockTranslations);
     
-    Block.registerDropFunction(oreId, function(c, id, data, digging, tool){
+    Block.registerDropFunction(oreId, function(c, id, data, digging){
         if(digging >= requiredToolLvl){
-            let drop = oreDrop;
+            let drop = oreDrop || [[id, 1, data]];
             for(var i in drop){
-                if(i[1] instanceof "string"){
-                    let values = i[1].split("-").forEach(function(e, i){
-                        return parseInt(e);
-                    });
-                    drop[i] = random(values[0], values[1]);
+                if(typeof drop[i][1] == "string"){
+                    let values = drop[i][1].split("-");
+                    drop[i][1] = Math.floor(parseInt(values[1]) - parseInt(values[0]) + 1 * Math.random()) + parseInt(values[0]);
                 }
             }
-            return oreDrop || [[id, 1, data]];
+            return drop;
         }
     });
     Block.registerDropFunction(oreBlockId, function(c, id, data, digging, tool){
@@ -271,7 +269,7 @@ function registerArmor(obj){
     const leggingsTranslations = obj3.leggings;
     const bootsTranslations = obj3.boots;
     const obj4 = obj.overrideNames;
-    const armorNameOverride = obj4 ? nameOverrider.overrideItemName(obj4.itemsColor, obj4.itemType, {other: obj4.other || null, dontDisplayDurability: obj4.dontDisplayDurability}) : null;
+    const armorNameOverride = obj4 ? nameOverrider.overrideItemName(obj4.itemsColor, obj4.itemType, {other: obj4.other || null, dontDisplayDurability: obj4.dontShowData}) : null;
     const obj5 = obj.recipes;
     var recipesAllowed = obj5&&obj5.prevent ? false : true;
 

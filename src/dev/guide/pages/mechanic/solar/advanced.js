@@ -10,16 +10,17 @@ ModAPI.addAPICallback("GuideAPI", function(){
         title: StringHelper.t("Advanced Solar Panel"),
             recipes:[{
                 grid:[
-                    ["r", "l", "r"],
-                    ["c", "p", "c"],
-                    ["s", "s", "s"]
+                    ["p", "l", "p"],
+                    ["c", "r", "c"],
+                    ["s", "l", "s"]
                 ],
                 materials:{
-                    "p":{id: BlockID.solarPanelAdvanced, data: 0},
+                    "p":{id: BlockID.solarPanelResonant, data: 0},
                     "c":{id: ItemID.solarCoreAdvanced, data: 0},
                     "l":{id: ItemID.cellPhotovailtaic, data: 0},
-                    "r":{id: 266, data: 0},
-                    "s":{id: ItemID.crystalSapphire, data: 0}
+                    "r":{id: ItemID.nuggetMionite, data: 0},
+                    "s":{id: ItemID.crystalSapphire, data: 0},
+                    "l":{id: ItemID.formationsLeotite, data: 0}
                 },
                 result:{id: BlockID.solarPanelAdvanced, data: 0}
             }],

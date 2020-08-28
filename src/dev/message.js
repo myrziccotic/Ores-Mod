@@ -7,7 +7,7 @@ Callback.addCallback("LevelLoaded", function(){
         Game.message(Translation.translate("§5miron27khv: §4created 90% of texture mod. §9Was taken to the development team since version 2.2.3"));
         Game.message(Translation.translate("§4ripemc: §6noticed a bug with integration with IC². §214.04.2019 §9version 2.4.5.3"));
         Game.message(Translation.translate("§5BrassyFaNToM: §7reported an error with most of the mechanisms. §C08.06.2019 §9 Versions §b3§f.§70"));
-        //Game.message(Translation.translate("§1Витя Белей: §7проявил соучастие в совершествовании рецептов компонентов механической брони и созданию новых ресурсов. §c09.08.2020 §b3§f.§70§f.§36"))
+        Game.message(Translation.translate("§1Витя Белей: §7проявил соучастие в совершествовании рецептов компонентов механической брони и созданию новых ресурсов. §c09.08.2020 §b3§f.§70§f.§36"))
         Player.addItemToInventory(ItemID.oresModGuideBook, 1, 0);
     }
 });

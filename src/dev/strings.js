@@ -186,3 +186,9 @@ Translation.addTranslation("The slot on the left should contain matter", {ru: "�
 Translation.addTranslation("Generation", {ru: "Генерация"});
 Translation.addTranslation("Condition", {ru: "Состояние"});
 Translation.addTranslation("§§1 Vitya Beley: §7 participated in improving recipes for mechanical armor components and creating new resources. §c09.08.2020 §b3§f.§70§f.§36", {ru: "§1Витя Белей: §7проявил соучастие в совершенствовании рецептов компонентов механической брони и созданию новых ресурсов. §c09.08.2020 §b3§f.§70§f.§36"});
+Translation.addTranslation("Lavarite", {ru: "Лаварит"});
+Translation.addTranslation("Leotite", {ru: "Леотит"});
+Translation.addTranslation("Mionite", {ru: "Мионит"});
+Translation.addTranslation("It is found in the lower world in magma.", {ru: "Встречается в нижнем мире в магме."});
+Translation.addTranslation("A strange mutation of the glowing stone, found in the lower world.", {ru: "Странная мутация светящегося камня, встречается в нижнем мире."});
+Translation.addTranslation("You need to search where the edge stone is located", {ru: "Нужно искать там, где находится камень края"});

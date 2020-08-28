@@ -14,18 +14,18 @@ OresAPI.registerItem("advancedMatrixOfHoloSystems", "Advanced Matrix Of Holo Sys
 OresAPI.registerItem("advancedMovableElements", "Advanced Movable Elements", {name: "movableElements" , data: 1}, {ru: "Продвинутые Подвижные Элементы"}, {stack: 8}, defaultItemNameOverride("b", "item"));
 
 Callback.addCallback("PostLoaded", function(){
-    OresAPI.addShapedRecipe([ItemID.connectingSystems, 1, 0], ["iai", "iri", "iai"], ["a", ItemID.ingotAdamantite, -1, "i", 265, 0, "r", 331, 0]);
-    OresAPI.addShapedRecipe([ItemID.opticalLens, 1, 0], ["rar", "aga", "rar"], ["a", ItemID.ingotAdamantite, -1, "r", 331, 0, "g", 102, 0]);
-    OresAPI.addShapedRecipe([ItemID.centralLogicSystem, 1, 0], ["asa", "dld", "asa"], ["a", BlockID.blockAdamantite, -1, "s", BlockID.blockSapphire, -1, "l", ItemID.localLogicSystem, -1, "d", 57, 0]); 
-    OresAPI.addShapedRecipe([ItemID.localLogicSystem, 1, 0], ["tat", "srs", "tdt"], ["t", ItemID.ingotLead, -1, "a", ItemID.ingotAdamantite, -1, "s", ItemID.crystalSapphire, -1, "d", 264, 0, "r", 331, 0]); 
-    OresAPI.addShapedRecipe([ItemID.matrixOfHoloSystems, 1, 0], ["sas", "rgr", "sas"], ["s", ItemID.crystalSapphire, -1, "r", 331, 0, "a", ItemID.ingotAdamantite, 0, "g", 102, 0]); 
-    OresAPI.addShapedRecipe([ItemID.manipulationCable, 1, 0], ["tst", "ada", "aea"], ["t", ItemID.ingotTin, -1, "s", ItemID.crystalSapphire, -1, "d", 264, 0, "a", ItemID.ingotAdamantite, -1, "e", 388, 0]); 
-    OresAPI.addShapedRecipe([ItemID.thermoadaptationCoating, 1, 0], ["ada", "sds", "ada"], ["d", 264, 0, "s", ItemID.crystalSapphire, -1, "a", ItemID.ingotAdamantite, -1]); 
-    OresAPI.addShapedRecipe([ItemID.outerProtectivePlate, 1, 0], ["aaa", "did", "aaa"], ["a", ItemID.ingotAdamantite, -1, "d", 264, 0, "i", 42, 0]);    
+    OresAPI.addShapedRecipe([ItemID.connectingSystems, 1, 0], ["iai", "iri", "iai"], ["a", ItemID.ingotLavarite, -1, "i", ItemID.ingotLead, 0, "r", 331, 0]);
+    OresAPI.addShapedRecipe([ItemID.opticalLens, 1, 0], ["rar", "aga", "rar"], ["a", ItemID.formationsLeotite, -1, "r", 331, 0, "g", 102, 0]);
+    OresAPI.addShapedRecipe([ItemID.centralLogicSystem, 1, 0], ["asa", "dld", "asa"], ["a", ItemID.ingotAdamantite, -1, "s", ItemID.formationsLeotite, -1, "l", ItemID.localLogicSystem, -1, "d", 57, 0]); 
+    OresAPI.addShapedRecipe([ItemID.localLogicSystem, 1, 0], ["tat", "srs", "tdt"], ["t", ItemID.ingotLavarite, -1, "a", ItemID.formationsLeotite, -1, "s", ItemID.crystalSapphire, -1, "d", 264, 0, "r", 331, 0]); 
+    OresAPI.addShapedRecipe([ItemID.matrixOfHoloSystems, 1, 0], ["sas", "rgr", "sas"], ["s", ItemID.formationsLeotite, -1, "r", 331, 0, "a", ItemID.ingotLavarite, 0, "g", 102, 0]); 
+    OresAPI.addShapedRecipe([ItemID.manipulationCable, 1, 0], ["tst", "ada", "aea"], ["t", ItemID.formationsLeotite, -1, "s", ItemID.crystalSapphire, -1, "d", 264, 0, "a", ItemID.ingotLavarite, -1, "e", 388, 0]); 
+    OresAPI.addShapedRecipe([ItemID.thermoadaptationCoating, 1, 0], ["ada", "sds", "ada"], ["d", ItemID.ingotLavarite, -1, "s", ItemID.crystalSapphire, -1, "a", ItemID.ingotAdamantite, -1]); 
+    OresAPI.addShapedRecipe([ItemID.outerProtectivePlate, 1, 0], ["aaa", "did", "aaa"], ["a", ItemID.ingotLavarite, -1, "d", ItemID.formationsLeotite, -1, "i", 42, 0]);    
     OresAPI.addShapedRecipe([ItemID.movableElements, 1, 0], ["xix", "iri", "xix"], ["i", 265, 0, "r", 331, 0]); 
-    OresAPI.addShapedRecipe([ItemID.advancedConnectingSystems, 1, 0], ["sss", "dcd", "sss"], ["d", 264, 0, "s", ItemID.crystalSapphire, -1, "c", ItemID.connectingSystems, 0]);  
-    OresAPI.addShapedRecipe([ItemID.advancedOpticalLens, 1, 0], ["rsr", "sgs", "rsr"], ["g", ItemID.opticalLens, 0, "r", 331, 0, "s", ItemID.crystalSapphire, -1]); 
-    OresAPI.addShapedRecipe([ItemID.advancedLocalLogicSystem, 1, 0], ["srs", "dcd", "srs"], ["s", BlockID.blockSapphire, 0, "r", 152, 0, "d", 57, 0, "c", ItemID.localLogicSystem, 0]);
-    OresAPI.addShapedRecipe([ItemID.advancedMatrixOfHoloSystems, 1, 0], ["oso", "oco", "oso"], ["o", 49, 0, "c", ItemID.matrixOfHoloSystems, 0, "s", ItemID.crystalSapphire, -1]);
-    OresAPI.addShapedRecipe([ItemID.advancedMovableElements, 1, 0], ["sds", "dcd", "sds"], ["s", ItemID.crystalSapphire, -1, "d", 264, 0, "c", ItemID.movableElements, 0]);
+    OresAPI.addShapedRecipe([ItemID.advancedConnectingSystems, 1, 0], ["sss", "dcd", "sss"], ["d", ItemID.crystalSapphire, -1, "s", ItemID.nuggetMionite, -1, "c", ItemID.connectingSystems, 0]);  
+    OresAPI.addShapedRecipe([ItemID.advancedOpticalLens, 1, 0], ["rsr", "sgs", "rsr"], ["g", ItemID.opticalLens, 0, "r", 331, 0, "s", ItemID.nuggetMionite, -1]); 
+    OresAPI.addShapedRecipe([ItemID.advancedLocalLogicSystem, 1, 0], ["srs", "scs", "srs"], ["s", ItemID.nuggetMionite, -1, "r", 152, 0, "c", ItemID.localLogicSystem, 0]);
+    OresAPI.addShapedRecipe([ItemID.advancedMatrixOfHoloSystems, 1, 0], ["oso", "oco", "oso"], ["o", 49, 0, "c", ItemID.matrixOfHoloSystems, 0, "s", ItemID.nuggetMionite, -1]);
+    OresAPI.addShapedRecipe([ItemID.advancedMovableElements, 1, 0], ["sds", "dcd", "sds"], ["s", ItemID.crystalSapphire, -1, "d", ItemID.nuggetMionite, -1, "c", ItemID.movableElements, 0]);
 });

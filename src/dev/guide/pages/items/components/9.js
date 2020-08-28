@@ -11,8 +11,8 @@ ModAPI.addAPICallback("GuideAPI", function(){
         recipes:[{
             grid: [["s", "s", "s"], ["d", "c", "d"], ["s", "s", "s"]],
             materials:{
-                "d":{id: 264},
-                "s":{id: ItemID.crystalSapphire},
+                "d":{id: ItemID.crystalSapphire},
+                "s":{id: ItemID.nuggetMionite},
                 "c":{id: ItemID.connectingSystems},
             },
             result: {id: ItemID.advancedConnectingSystems}

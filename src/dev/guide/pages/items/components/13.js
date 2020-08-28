@@ -12,7 +12,7 @@ ModAPI.addAPICallback("GuideAPI", function(){
             grid: [["s", "d", "s"], ["d", "c", "d"], ["s", "d", "s"]],
             materials:{
                 "o":{id: 49},
-                "d":{id: 264},
+                "d":{id: ItemID.nuggetMionite},
                 "c":{id: ItemID.movableElements},
                 "s":{id: ItemID.crystalSapphire},
             },

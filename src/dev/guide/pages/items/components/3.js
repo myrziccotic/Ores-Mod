@@ -11,8 +11,8 @@ ModAPI.addAPICallback("GuideAPI", function(){
         recipes:[{
             grid: [["a", "s", "a"], ["d", "l", "d"], ["a", "s", "a"]],
             materials:{
-                "a":{id: BlockID.blockAdamantite},
-                "s":{id: BlockID.blockSapphire},
+                "a":{id: ItemID.ingotAdamantite},
+                "s":{id: ItemID.formationsLeotite},
                 "l":{id: ItemID.localLogicSystem},
                 "d":{id: 57}
             },

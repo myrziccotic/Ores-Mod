@@ -18,10 +18,10 @@ OresAPI.registerBlock("solarPanelUltimate", false, [
 ], false, [{ru: "Совершенная Солнечная Панель"}], energyNameOverride(5, "machine", OresAPI.getConfigValue("ultimate_solar_panel.output"), 1), "stone", 1);
 
 Callback.addCallback("PostLoaded", function(){
-  Recipes.addShaped({id: BlockID.solarPanelLeadstone, count: 1, data: 0}, ["lll", "rcr", "nnn"], ["l", ItemID.cellPhotovailtaic, -1, "r", ItemID.ingotLead, -1, "c", ItemID.solarCoreLeadstone, -1, "n", 452, 0]);
-  Recipes.addShaped({id: BlockID.solarPanelHardent, count: 1, data: 0}, ["rlr", "cpc", "nrn"], ["p", BlockID.solarPanelLeadstone, -1, "c", ItemID.solarCoreHardent, -1, "r", ItemID.ingotLead, -1, "l", ItemID.cellPhotovailtaic, -1, "n", ItemID.nuggetLead, -1]);
-  Recipes.addShaped({id: BlockID.solarPanelRedstone, count: 1, data: 0}, ["rlr", "cpc", "nnn"], ["p", BlockID.solarPanelHardent, -1, "c", ItemID.solarCoreRedstone, -1, "l", ItemID.cellPhotovailtaic, -1, "r", 266, 0, "n", ItemID.nuggetElectrum, -1]);
-  Recipes.addShaped({id: BlockID.solarPanelResonant, count: 1, data: 0}, ["rlr", "cpc", "rrr"], ["p", BlockID.solarPanelRedstone, -1, "c", ItemID.solarCoreResonant, -1, "r", 351, 4, "l", ItemID.cellPhotovailtaic, -1]);
-  Recipes.addShaped({id: BlockID.solarPanelAdvanced, count: 1, data: 0}, ["rlr", "cpc", "sss"], ["p", BlockID.solarPanelResonant, -1, "c", ItemID.solarCoreAdvanced, -1, "r", 266, 0, "l", ItemID.cellPhotovailtaic, -1, "s", ItemID.crystalSapphire, -1]);
-  Recipes.addShaped({id: BlockID.solarPanelUltimate, count: 1, data: 0}, ["rlr", "cpc", "rcr"], ["p", BlockID.solarPanelAdvanced, -1, "c", ItemID.solarCoreUltimate, -1, "r", ItemID.nuggetMistery, -1, "l", ItemID.cellPhotovailtaic, -1]);
+  Recipes.addShaped({id: BlockID.solarPanelLeadstone, count: 1, data: 0}, ["lll", "rcr", "nnn"], ["l", ItemID.cellPhotovailtaic, -1, "r", ItemID.ingotLead, -1, "c", ItemID.solarCoreLeadstone, -1, "n", ItemID.ingotLead, -1]);
+  Recipes.addShaped({id: BlockID.solarPanelHardent, count: 1, data: 0}, ["plp", "crc", "nrn"], ["p", BlockID.solarPanelLeadstone, -1, "c", ItemID.solarCoreHardent, -1, "r", ItemID.ingotLead, -1, "l", ItemID.cellPhotovailtaic, -1, "n", ItemID.nuggetLead, -1]);
+  Recipes.addShaped({id: BlockID.solarPanelRedstone, count: 1, data: 0}, ["plp", "crc", "nnn"], ["p", BlockID.solarPanelHardent, -1, "c", ItemID.solarCoreRedstone, -1, "l", ItemID.cellPhotovailtaic, -1, "r", 266, 0, "n", ItemID.nuggetElectrum, -1]);
+  Recipes.addShaped({id: BlockID.solarPanelResonant, count: 1, data: 0}, ["plp", "crc", "nrn"], ["p", BlockID.solarPanelRedstone, -1, "c", ItemID.solarCoreResonant, -1, "r", 22, 0, "l", ItemID.cellPhotovailtaic, -1, "n", ItemID.nuggetMistery, -1]);
+  Recipes.addShaped({id: BlockID.solarPanelAdvanced, count: 1, data: 0}, ["plp", "crc", "sls"], ["p", BlockID.solarPanelResonant, -1, "c", ItemID.solarCoreAdvanced, -1, "r", ItemID.nuggetMionite, -1, "l", ItemID.cellPhotovailtaic, -1, "s", ItemID.crystalSapphire, -1, "l", ItemID.formationsLeotite, -1]);
+  Recipes.addShaped({id: BlockID.solarPanelUltimate, count: 1, data: 0}, ["plp", "crc", "ncn"], ["p", BlockID.solarPanelAdvanced, -1, "c", ItemID.solarCoreUltimate, -1, "r", ItemID.nuggetMistery, -1, "l", ItemID.cellPhotovailtaic, -1, "n", ItemID.nuggetMionite, -1]);
 });

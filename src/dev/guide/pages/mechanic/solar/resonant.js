@@ -8,15 +8,16 @@ ModAPI.addAPICallback("GuideAPI", function(){
         title: StringHelper.t("Resonant Solar Panel"),
         recipes:[{
             grid:[
-                ["r", "l", "r"],
-                ["c", "p", "c"],
-                ["r", "r", "r"]
+                ["p", "l", "p"],
+                ["c", "r", "c"],
+                ["n", "r", "n"]
             ],
             materials:{
                 "p":{id: BlockID.solarPanelRedstone, data: 0},
                 "c":{id: ItemID.solarCoreResonant, data: 0},
                 "l":{id: ItemID.cellPhotovailtaic, data: 0},
-                "r":{id: 351, data: 4}
+                "r":{id: 22, data: 0},
+                "n":{id: ItemID.nuggetMistery, data: 0}
             },
             result:{id: BlockID.solarPanelResonant, data: 0}
         }],

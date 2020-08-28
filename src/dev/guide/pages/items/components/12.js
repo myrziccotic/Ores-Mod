@@ -13,7 +13,7 @@ ModAPI.addAPICallback("GuideAPI", function(){
             materials:{
                 "o":{id: 49},
                 "c":{id: ItemID.matrixOfHoloSystems},
-                "s":{id: BlockID.blockSapphire},
+                "s":{id: ItemID.nuggetMionite},
             },
             result: {id: ItemID.advancedMatrixOfHoloSystems}
         }],  

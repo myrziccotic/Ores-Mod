@@ -9,10 +9,11 @@ ModAPI.addAPICallback("GuideAPI", function(){
         ctrl: "craftPage",
         title: StringHelper.t("Outer Protective Plate"),
         recipes:[{
-            grid: [["x", "i", "x"], ["i", "r", "i"], ["x", "i", "x"]],
+            grid: [["a", "a", "a"], ["d", "i", "d"], ["a", "a", "a"]],
             materials:{
-                "i":{id: 265},
-                "r":{id: 331},
+                "a":{id: ItemID.ingotLavarite},
+                "d":{id: ItemID.formationsLeotite},
+                "i":{id: 42}
             },
             result: {id: ItemID.outerProtectivePlate}
         }],  
